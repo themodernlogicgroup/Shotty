@@ -1,0 +1,2 @@
+# Shotty
+ shotty the screenshotter
