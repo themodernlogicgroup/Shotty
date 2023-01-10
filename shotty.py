@@ -5,6 +5,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys  
 from selenium.webdriver.chrome.options import Options
 import datetime
+import colorama
+from colorama import Fore, Style
 
 OUTPUT = 'outputs'
 INPUT_FILE = sys.argv[1]
@@ -19,12 +21,12 @@ def timeStamped(fname, fmt='%Y-%m-%d-%H-%M-%S-{fname}'):
 try:
    file = open(INPUT_FILE, "r")
 except IOError:
-   cprint ("ERROR: There was an error reading file.\n", 'red')
+   print(Fore.RED + "there was an error reading the file")
    sys.exit()
 
 if len(sys.argv) > 3:
     if len(sys.argv) < 4:
-        cprint("ERROR: Missing folder name. eg: --out <folder_name>\n", 'red')
+        print(Fore.RED + "ERROR: Missing folder name. eg: --out <folder_name")
         sys.exit()
     else:
         OUTPUT = sys.argv[3]
@@ -34,7 +36,7 @@ fileData = tuple(file.readlines())
 file.close()
 
 if len(fileData) <= 0:
-    cprint ("ERROR: File is empty! Please data into the file\n", 'red')
+    print(Fore.RED + "ERROR: File is empty! Please data into the file")
     sys.exit()
 
 # URL Parser
@@ -74,6 +76,5 @@ if len(fileData) > 0:
     for url in fileData:
         result = takeScreeshot(url)
         if result:
-            print(url.strip() + ' is ready.', 'green')
+            print(url.strip() + Fore.GREEN + ' is ready.')
 sys.exit()
-
