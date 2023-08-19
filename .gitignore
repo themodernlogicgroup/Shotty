@@ -152,3 +152,5 @@ cython_debug/
 #.idea/
 .history/shotty_20230110130012.py
 .history/shotty_20230110130105.py
+*.png
+*.txt

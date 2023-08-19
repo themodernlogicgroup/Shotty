@@ -13,6 +13,7 @@ INPUT_FILE = sys.argv[1]
 
 # date time function
 
+
 def timeStamped(fname, fmt='%Y-%m-%d-%H-%M-%S-{fname}'):
         return datetime.datetime.now().strftime(fmt).format(fname=fname)
 
@@ -64,7 +65,8 @@ def takeScreeshot(url):
             
             chrome_options = Options()
             chrome_options.add_argument("--headless") 
-            driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"), chrome_options=chrome_options)
+            option = webdriver.ChromeOptions()
+            driver = webdriver.Chrome(options = option)
             driver.set_window_size(1280, 1024) 
             driver.get(u)
             driver.save_screenshot(os.getcwd() + '/' +OUTPUT + '/screenshot-' + urlparse(url).path + '.png')  
