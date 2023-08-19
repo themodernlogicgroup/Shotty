@@ -64,12 +64,18 @@ def takeScreeshot(url):
                 os.makedirs(OUTPUT)
             
             chrome_options = Options()
-            chrome_options.add_argument("--headless") 
+            chrome_options.add_argument("--headless")
+            chrome_options.add_argument('--no-sandbox')
+            chrome_options.add_argument("--proxy-bypass-list=*")
+            chrome_options.add_argument('--ignore-certificate-errors')
             option = webdriver.ChromeOptions()
             driver = webdriver.Chrome(options = option)
             driver.set_window_size(1280, 1024) 
-            driver.get(u)
-            driver.save_screenshot(os.getcwd() + '/' +OUTPUT + '/screenshot-' + urlparse(url).path + '.png')  
+            try:
+                driver.get(u)
+                driver.save_screenshot(os.getcwd() + '/' +OUTPUT + '/screenshot-' + urlparse(url).path + '.png')  
+            except:
+                print("Skipping URL: " + url)
             return True
         else:
             return False
