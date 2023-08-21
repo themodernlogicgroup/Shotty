@@ -37,7 +37,7 @@ fileData = tuple(file.readlines())
 file.close()
 
 if len(fileData) <= 0:
-    print(Fore.RED + "ERROR: File is empty! Please data into the file")
+    print(Fore.RED + "ERROR: File is empty! Please add data into the file")
     sys.exit()
 
 # URL Parser

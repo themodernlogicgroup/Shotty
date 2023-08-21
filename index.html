@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>Shotty images</title>
+    <link rel="stylesheet" type="text/css" href="page.css">
+
+</head>
+<body>
+    <h1>screenshots done</h1>
+
+    <style>
+        .card-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .card {
+            flex: 1 1 auto;
+            width: 20%;
+            margin: 2%;
+            border: 1px solid #0e0101;
+        }
+    </style>
+
+    <div class="card-container">
+        <script>
+            // Fetch the image file names from the server
+            fetch("/images")
+              .then(response => response.json())
+              .then(imageFiles => {
+                // Loop through the list of files
+                for (let i = 0; i < imageFiles.length; i++) {
+                  // Create an <img> tag for each file
+                  let image = document.createElement("img");
+                  image.src = `outputs/${imageFiles[i]}`;
+                  image.alt = "My Image";
+                  image.className = "card";
+                  image.width = "250";
+                  image.height = "250";
+
+                  // Append the <img> tag to the page
+                  document.querySelector(".card-container").appendChild(image);
+                }
+              })
+              .catch(error => console.log(error));
+        </script>
+    </div>
+</body>
+</html>

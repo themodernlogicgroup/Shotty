@@ -154,3 +154,7 @@ cython_debug/
 .history/shotty_20230110130105.py
 *.png
 *.txt
+node_modules/.bin/mime
+
+outputs/**
+node_modules/**
