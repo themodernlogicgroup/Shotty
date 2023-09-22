@@ -1,4 +1,7 @@
 # Shotty
+
+Open Sourced by : Jon Little
+
  shotty the screenshotter
 
 # run the tool
